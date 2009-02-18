@@ -1,0 +1,38 @@
+\name{afc.dp}
+\alias{afc.dp}
+\title{ 2AFC For Dichotomous Observations And Probabilistic Forecasts }
+\description{
+ Routine to calculate the Generalized Discrimination Score (aka
+ Two-Alternatives Forced Choice Score 2AFC) for the situation of
+ dichotomous observations and discrete probabilistic forecasts
+}
+\usage{
+afc.dp(obsv, fcst)
+}
+\arguments{
+  \item{obsv}{ vector with dichotomous observations (values in \{0,1\}) }
+  \item{fcst}{ vector of same length as \emph{obsv} with forecast
+  probabilities for the event to happen }
+}
+\details{
+   This routine applies Eq.5 of Mason and Weigel (2009) to calculate the 2AFC.
+}
+\value{
+ \item{ p.afc }{ Value of Generalized Discrimination (2AFC) Score }
+}
+\references{ S.J. Mason and A.P. Weigel, 2009. A generic verification
+  framework for administrative purposes. Mon. Wea. Rev., 137, 331-349 }
+\author{ Andreas Weigel, Federal Office of Meteorology and Climatology,
+  MeteoSwiss, Zurich, Switzerland }
+\seealso{ \code{\link{afc}} }
+\examples{
+  #Forecasts and observations of Nino-3.4 index
+  #Load set of dichotomous observations and probabilistic forecasts
+  data(cnrm.nino34.dp)
+  obsv = cnrm.nino34.dp$obsv
+  fcst = cnrm.nino34.dp$fcst
+
+  #Calculate skill score
+  afc.dp(obsv,fcst)
+}
+\keyword{ file }% at least one, from doc/KEYWORDS
