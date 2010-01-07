@@ -27,24 +27,26 @@ afc.mp = function(obsv,fcst,m=3){
   for (k in 1:(m-1)) for (l in (k+1):m){
     index.k = which(obsv == k)
     index.l = which(obsv == l)
-    p.k = fcst[index.k,]
-    p.l = fcst[index.l,]
-    test = 0
-    # Calculate inner two sums in Eq. 16a
-    for (i in 1:n.vector[k]) for (j in 1:n.vector[l]){
-      p.ki = p.k[i,]
-      p.lj = p.l[j,]
-      numer11 = 0
-      #calculate F in Eq. 16c
-      for (r in 1:(m-1)) for (s in (r+1):m){
-        numer11 = numer11 + p.ki[r]*p.lj[s]
+    if ( (length(index.l) > 0) & (length(index.k) > 0)){
+      p.k = fcst[index.k,,drop=FALSE]
+      p.l = fcst[index.l,,drop=FALSE]
+      test = 0
+      # Calculate inner two sums in Eq. 16a
+      for (i in 1:n.vector[k]) for (j in 1:n.vector[l]){
+        p.ki = p.k[i,]
+        p.lj = p.l[j,]
+        numer11 = 0
+        #calculate F in Eq. 16c
+        for (r in 1:(m-1)) for (s in (r+1):m){
+          numer11 = numer11 + p.ki[r]*p.lj[s]
+        }
+        f = numer11/(1-sum(p.ki*p.lj))
+        if (!is.finite(f)) f = 0.5    
+        test = test + 0.5*(f == 0.5) + (f > 0.5)
       }
-      f = numer11/(1-sum(p.ki*p.lj))
-      if (!is.finite(f)) f = 0.5    
-      test = test + 0.5*(f == 0.5) + (f > 0.5)
+      numer = numer + test
+      denom = denom + n.vector[l]*n.vector[k]
     }
-    numer = numer + test
-    denom = denom + n.vector[l]*n.vector[k]
   }
 
   p.afc = numer/denom

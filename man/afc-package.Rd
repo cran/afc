@@ -41,11 +41,9 @@ observations are not discrete.
 \details{
 \tabular{ll}{
 Package: \tab afc\cr
-Version: \tab 0.9\cr
-Date: \tab 2009-02-03\cr
-License: \tab GPL2\cr
-Packaged: \tab Tue Feb 3 15:03:40 2009; weigel\cr
-Built: \tab R 2.3.1; ; 2009-02-03 15:03:41; unix\cr
+Version: \tab 1.03\cr
+Date: \tab 2010-01-07\cr
+License: \tab GPL-2\cr
 }
 
 Index:

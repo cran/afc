@@ -1,5 +1,5 @@
 \name{afc.np}
-\alias{afc.np}.
+\alias{afc.np}
 \title{ 2AFC For Nominal Polychotomous Observations Ans Probabilistic Forecasts }
 \description{
  Routine to calculate the Generalized Discrimination Score (aka
