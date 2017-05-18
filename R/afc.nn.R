@@ -1,3 +1,35 @@
+#' 2AFC For Nominal Polychotomous Observations And Nominal Polychotomous
+#' Forecasts
+#' 
+#' Routine to calculate the Generalized Discrimination Score (aka
+#' Two-Alternatives Forced Choice Score 2AFC) for the situation of
+#' polychotomous observations (nominal) and polychotomous forecasts (nominal)
+#' 
+#' This routine applies Eq.15 of Mason and Weigel (2009) to calculate the 2AFC.
+#' 
+#' @param obsv vector with polychotomous observations (values in {1,..,m})
+#' @param fcst vector of same length as \emph{obsv} with polychotomous
+#' forecasts (values in {1,..,m})
+#' @param m number of observation and forecast categories (default = 3)
+#' @return \item{ p.afc }{ Value of Generalized Discrimination (2AFC) Score }
+#' @author Andreas Weigel, Federal Office of Meteorology and Climatology,
+#' MeteoSwiss, Zurich, Switzerland
+#' @seealso \code{\link{afc}}
+#' @references S.J. Mason and A.P. Weigel, 2009. A generic verification
+#' framework for administrative purposes. Mon. Wea. Rev., 137, 331-349
+#' @keywords file
+#' @examples
+#' 
+#'   #Forecasts and observations of Nino-3.4 index
+#'   #Load set of polychotomous observations and polychotomous forecasts (4 categories)
+#'   data(cnrm.nino34.mm)
+#'   obsv = cnrm.nino34.mm$obsv
+#'   fcst = cnrm.nino34.mm$fcst
+#' 
+#'   #Calculate skill score
+#'   afc.nn(obsv,fcst,4)
+#' 
+#' @export afc.nn
 afc.nn = function(obsv,fcst,m=3){
 
   #################################
